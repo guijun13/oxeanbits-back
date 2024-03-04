@@ -8,8 +8,19 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :movies, only: [:index, :new, :create]
   resources :user_movies, only: [:create, :update]
-
+  
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/users', to: 'users#index'
+  post '/users', to: 'users#create'
+
+  get '/movies', to: 'movies#index'
+  post '/movies', to: 'movies#create'
+
+  get '/user_movies', to: 'user_movies#index'
+  post '/user_movies', to: 'user_movies#create'
+  patch '/user_movies', to: 'user_movies#update'
+  
   delete '/logout', to: 'sessions#destroy'
 
   root 'sessions#new'
