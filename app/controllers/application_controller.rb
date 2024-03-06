@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless logged_in?
+      render json: { message: 'You must be logged in to access this page' }, status: 401
       flash[:alert] = "You must be logged in to access this page"
       # redirect_to login_path
     end
